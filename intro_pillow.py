@@ -44,34 +44,17 @@ def save_image(img, filename):
 # Abrir una imagen de la computadora
 with Image.open("kuky_original.png") as border:
     border.show()
-
-'''try:
-    img2 = Image.open("example.jpg")
-    img2.show()
-    print("Imagen existente")
-except FileNotFoundError:
-    print("No se encuentra la imagen")'''
-
-# Guardar imágenes en distintos formatos
-
-img1.save("red_image.png")
-img1.save("img1_red.jpeg")
-print("Se guardaron las imágenes.")
-
+    
 # ----- Edición de imágenes -----
 
 # cambiar tamaño
 img3 = Image.new("RGB", (100,100), color="blue")
 img3_resized = img3.resize((50,50))
 
-border = Image.open("kuky_original.png")
-
+# rotar
 border_rotar1 = border.rotate(45)
-border_rotar2 = border.rotate(90)
 
-save_image(border_rotar1, "kuky_rotar45.png")
-save_image(border_rotar2, "kuky_rotar90.png")
-
+# aplicar filtros
 border_grey = border.convert("L")
 save_image(border_grey, "kuky_grey.png")
 
@@ -126,7 +109,6 @@ fondo.paste(top, (100,900)) # especificar la posición en donde se coloca
 fondo.show()
 save_image(fondo, "imgs_combinadas.png")
 
-
 # Dibujar formas simples sobre una imagen
 img_draw = Image.new("RGB", (120,60), color="white")
 draw = ImageDraw.Draw(img_draw)
@@ -151,17 +133,7 @@ save_image(img_draw2, "img_dibujo_texto.png")
 border_blur = border.filter(ImageFilter.BLUR)
 save_image(border_blur, "kuky_blur.png")
 
-border_contornos = border.filter(ImageFilter.CONTOUR) # contornos --efecto lápiz
-save_image(border_contornos, "kuky_contornos.png")
-
-border_details = border.filter(ImageFilter.DETAIL) # ilumina los detalles de la imagen
-save_image(border_details, "kuky_details.png")
-
-border_edges = border.filter(ImageFilter.EDGE_ENHANCE) # hace énfasis en los bordes
-save_image(border_edges, "kuky_edges.png")
-
-border_sombras = border.filter(ImageFilter.EMBOSS) # sombras y luces
-save_image(border_sombras, "kuky_sombras.png")
+# CONTOUR, DETAIL, EDGE_ENHANCE, EMBOSS
 
 # ----- AGREGAR MARCA DE AGUA -----
 
