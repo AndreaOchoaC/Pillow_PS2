@@ -89,8 +89,8 @@ draw.rectangle([10,10,110,50], outline="black", width=2) # especificar [x1, y1, 
 save_image(img_draw, "dibujo1.png")
 
 copia = border.copy()
-borde1 = ImageDraw.Draw(copia)
-borde1.rectangle([100, 800, 800, 1000], fill="blue", outline="black", width=8)
+rect1 = ImageDraw.Draw(copia)
+rect1.rectangle([100, 900, 800, 1300], fill="blue", outline="black", width=8)
 #copia.show()
 save_image(copia, "kuky_rect_azul.png")
 
@@ -126,7 +126,7 @@ text2.text((100,800), "100, 800", fill="blue", font=font)
 text3 = ImageDraw.Draw(img_etiquetas)
 text3.text((500, 100), "500, 100", fill="blue", font=font)
 text4 = ImageDraw.Draw(img_etiquetas)
-text4.text((500, 800), "500, 8800", fill="blue", font=font)
+text4.text((500, 800), "500, 800", fill="blue", font=font)
 
 text5 = ImageDraw.Draw(img_etiquetas)
 text5.text((100, 1400), "100, 1400", fill="blue", font=font)
@@ -134,9 +134,10 @@ text6 = ImageDraw.Draw(img_etiquetas)
 text6.text((500, 1400), "500, 1400", fill="blue", font=font)
 
 # también le ponemos un borde
+print("Tamaño de la imagen:", border.size) # (900, 1600)
 borde = ImageDraw.Draw(img_etiquetas)
 # dibujar rectangulo de borde alrededor de la imagen, especificando el ancho del borde
-borde.rectangle([10, 10, 100, 100], outline="red", width=8) # especificar [x1, y1, x2, y2]
+borde.rectangle([20, 20, 780, 1480], outline="red", width=8) # especificar [x1, y1, x2, y2]
 
 # Guardar imagen con etiquetas + borde
 save_image(img_etiquetas, "kuky_etiquetas.png")
@@ -169,22 +170,22 @@ top2 = dino_transp_rgba.resize([400,400])
 fondo2.paste(top2, (500, 1100), top2)
 save_image(fondo2, "kuky_dino2.png")
 
-exit()
-
 # Combinar dibujos y texto
 img_draw2 = Image.new("RGB", (200,200), color="white")
 draw2 = ImageDraw.Draw(img_draw2)
-draw2.rectangle([10,10,110,50], outline="blue", width=2)
-draw2.text((15,20), "Combinamos imágenesy texto", fill="green")
+draw2.rectangle([10,10,110,50], outline="blue", width=8)
+draw2.text((15,20), "Combinamos imágenes y texto", fill="green")
 save_image(img_draw2, "img_dibujo_texto.png")
 
 # Combinar texto y stickers
 img_texto_sticker = border.copy()
-texto_kuky = ImageDraw.Draw(img_texto_sticker)
-texto_kuky.text((500, 200), "Hola", fill="blue", font=font)
+draw_kuky = ImageDraw.Draw(img_texto_sticker)
+draw_kuky.rectangle([400, 1000, 800, 1400], outline="black", fill="green")
+draw_kuky.text((500, 900), "Hola", fill="blue", font=font)
 #img_texto_sticker.show()
 save_image(img_texto_sticker, "kuky_texto_sticker.png")
 
+exit()
 # ----- APLICAR FILTROS A LAS IMÁGENES -----
 
 border_grey = border.convert("L") # escala de grises
